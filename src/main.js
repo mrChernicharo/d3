@@ -115,6 +115,73 @@ import { attrs } from "d3-selection-multi";
 
 // let d = [50, 100, 150, 200, 250];
 
+// let dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// let svg = d3
+//   .select("body")
+//   .append("svg")
+//   .style("background", "lightblue")
+//   .attrs(dim);
+
+// // "circle"
+// let attributes = {
+//   cx: 100,
+//   cy: 100,
+//   r: 40,
+// };
+// svg.append("circle").attrs(attributes);
+
+// // "ellipse"
+// attributes = {
+//   cx: 300,
+//   cy: 100,
+//   rx: 60,
+//   ry: 30,
+// };
+// svg.append("ellipse").attrs(attributes);
+
+// // "line"
+// attributes = {
+//   x1: 450,
+//   y1: 150,
+//   x2: 550,
+//   y2: 50,
+//   stroke: "black",
+// };
+// svg.append("line").attrs(attributes);
+
+// // "polygon"
+// attributes = {
+//   points: "50,250 100,350 150,300 150,350", // x,y x,y x,y x,y
+//   stroke: "black",
+//   fill: "none",
+// };
+// svg.append("polygon").attrs(attributes);
+
+// // "polyline"
+// attributes = {
+//   points: "250,250 300,350 350,300 350,350", // x,y x,y x,y x,y
+//   stroke: "black",
+//   fill: "none",
+// };
+// svg.append("polyline").attrs(attributes);
+
+// // "rect"
+// attributes = {
+//   x: 450,
+//   y: 300,
+//   width: 100,
+//   height: 80,
+//   rx: 10, // border-radius
+// };
+// svg.append("rect").attrs(attributes);
+
+// ================================ aula 09 ================================----
+// ================================ [Path Element] ================================---
+
 let dim = {
   width: 600,
   height: 400,
@@ -126,52 +193,41 @@ let svg = d3
   .style("background", "lightblue")
   .attrs(dim);
 
+// "path"
 let attributes = {
-  cx: 100,
-  cy: 100,
-  r: 40,
-};
-svg.append("circle").attrs(attributes);
-
-attributes = {
-  cx: 300,
-  cy: 100,
-  rx: 60,
-  ry: 30,
-};
-svg.append("ellipse").attrs(attributes);
-
-attributes = {
-  x1: 450,
-  y1: 150,
-  x2: 550,
-  y2: 50,
-  stroke: "black",
-};
-svg.append("line").attrs(attributes);
-
-attributes = {
-  points: "50,250 100,350 150,300 150,350", // x,y x,y x,y x,y
-  stroke: "black",
+  d: `M 100,300
+		l 0,-200
+		L 300,200
+		l 200,-100
+		L 500,300
+		C 400,350 400,250 500,300
+		Z`,
+  stroke: "purple",
   fill: "none",
 };
-svg.append("polygon").attrs(attributes);
+svg.append("path").attrs(attributes);
 
-attributes = {
-  points: "250,250 300,350 350,300 350,350", // x,y x,y x,y x,y
-  stroke: "black",
-  fill: "none",
-};
-svg.append("polyline").attrs(attributes);
+// Letras maiúsculas pra coords Absolutas e minúsculas para coords Relativas
 
-attributes = {
-  x: 450,
-  y: 300,
-  width: 100,
-  height: 80,
-  rx: 10, // border-radius
-};
-svg.append("rect").attrs(attributes);
+// M -> início
+// L -> line
+// C -> curve
+// Z -> fechar a forma
+
+// ================================ aula 10 ================================----
+// ================================ [Appearance Attributes] ================================---
+
+// ================================ aula ================================----
+// ================================ [] ================================---
+
+// ================================ aula ================================----
+// ================================ [] ================================---
+
+// ================================ aula ================================----
+// ================================ [] ================================---
+
+// ================================ aula ================================----
+// ================================ [] ================================---
 
 // ================================ aula ================================----
 // ================================ [] ================================---
