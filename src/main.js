@@ -217,34 +217,103 @@ import { attrs } from "d3-selection-multi";
 // ================================ aula 10 ================================----
 // ================================ [Appearance Attributes] ================================---
 
+// let dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// let svg = d3
+//   .select("body")
+//   .append("svg")
+//   .style("background", "lightgrey")
+//   .attrs(dim);
+
+// svg.append("line").attrs({
+//   x1: 0,
+//   y1: 200,
+//   x2: 600,
+//   y2: 200,
+//   stroke: "#888",
+// });
+
+// svg.append("line").attrs({
+//   x1: 300,
+//   y1: 0,
+//   x2: 300,
+//   y2: 400,
+//   stroke: "#888",
+// });
+
+// let attributes = {
+//   x: 300,
+//   y: 200,
+// };
+
+// let attributes = {
+//   points: "100,300 500,300 300,100",
+//   stroke: "purple", // default: black
+//   fill: "orange", // default: black
+//   "stroke-width": 20,
+//   opacity: 0.9,
+//   "fill-opacity": 0.7,
+//   "stroke-opacity": 0.4,
+//   "stroke-dasharray": "30, 5, 10, 5",
+//   cursor: "crosshair",
+// };
+// svg.append("polygon").attrs(attributes);
+
+// ================================ aula 11 ================================----
+// ================================ [Text Element] ================================---
+
+// let attributes = {
+//   x: 300,
+//   y: 200,
+//   textLength: 300,
+//   lengthAdjust: "spacingAndGlyphs",
+//   "font-size": 38,
+//   // rotate: 30,
+//   "font-family": "sans-serif",
+//   "font-style": "italic",
+//   "font-weight": 100,
+//   "alignment-baseline": "hanging", // middle, hanging
+//   "text-anchor": "middle", // middle, start
+//   "letter-spacing": 10,
+// };
+// svg.append("text").attrs(attributes).text("hey yoou!");
+
+// ================================ aula 12 ================================----
+// ================================ [Text Element] ================================---
+
 let dim = {
   width: 600,
   height: 400,
 };
 
-let svg = d3
+let canvas = d3
   .select("body")
   .append("svg")
-  .style("background", "lightblue")
+  .style("background", "lightgrey")
   .attrs(dim);
 
+let pth = "M100,200 Q300,100 500,200";
+
+canvas
+  .append("path")
+  .attrs({ d: pth, fill: "none", stroke: "red", id: "myPath" });
+
 let attributes = {
-  points: "100,300 500,300 300,100",
-  stroke: "purple", // default: black
-  fill: "orange", // default: black
-  "stroke-width": 20,
-  opacity: 0.9,
-  "fill-opacity": 0.7,
-  "stroke-opacity": 0.4,
-  "stroke-dasharray": "30, 5, 10, 5",
-  cursor: "crosshair",
+  href: "#myPath",
+  "font-size": 44,
+  "text-anchor": "middle",
+  startOffset: "50%",
 };
-svg.append("polygon").attrs(attributes);
 
-// ================================ aula ================================----
-// ================================ [] ================================---
-
-// ================================ aula ================================----
+canvas
+  .append("text")
+  .append("textPath")
+  .attrs(attributes)
+  .text("Text on path!");
+// ================================ aula 13 ================================----
 // ================================ [] ================================---
 
 // ================================ aula ================================----
