@@ -1,5 +1,5 @@
-import * as d3 from "d3";
-import { attrs } from "d3-selection-multi";
+import * as d3 from 'd3';
+import { attrs } from 'd3-selection-multi';
 
 // ================================ aula 01 ================================---
 // ================================ [setup] ================================---
@@ -282,39 +282,80 @@ import { attrs } from "d3-selection-multi";
 // svg.append("text").attrs(attributes).text("hey yoou!");
 
 // ================================ aula 12 ================================----
-// ================================ [Text Element] ================================---
+// ================================ [TextPath] ================================---
 
-let dim = {
-  width: 600,
-  height: 400,
-};
+// let dim = {
+//   width: 600,
+//   height: 400,
+// };
 
-let canvas = d3
-  .select("body")
-  .append("svg")
-  .style("background", "lightgrey")
-  .attrs(dim);
+// let canvas = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
 
-let pth = "M100,200 Q300,100 500,200";
+// let pth = 'M100,200 Q300,100 500,200';
 
-canvas
-  .append("path")
-  .attrs({ d: pth, fill: "none", stroke: "red", id: "myPath" });
+// canvas.append('path').attrs({ d: pth, fill: 'none', stroke: 'red', id: 'myPath' });
 
-let attributes = {
-  href: "#myPath",
-  "font-size": 44,
-  "text-anchor": "middle",
-  startOffset: "50%",
-};
+// let attributes = {
+//   href: '#myPath',
+//   'font-size': 44,
+//   'text-anchor': 'middle',
+//   startOffset: '50%',
+// };
 
-canvas
-  .append("text")
-  .append("textPath")
-  .attrs(attributes)
-  .text("Text on path!");
-// ================================ aula 13 ================================----
-// ================================ [] ================================---
+// canvas.append('text').append('textPath').attrs(attributes).text('Text on path!');
+
+// ================================ aula 14 ================================----
+// ================================ [Statistical Functions] ================================---
+
+//primeiro dataset
+let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20];
+
+// segundo dataset
+// data = [
+//   { a: 2, b: 5 },
+//   { a: -2, b: 12 },
+//   { a: 18, b: 7 },
+// ];
+
+d3.select('body').append('p').style('font-size', '24px').text(data.join(', '));
+
+d3.select('body').append('hr');
+
+let p = d3.select('body').append('p').style('font-size', '24px');
+
+let d;
+
+// # funções estatísticas: min, max, mean, extent ...
+
+// *** usando o primeiro dataset
+// d = d3.max(data);          	// 24
+// d = d3.min(data);          	// 5
+// d = d3.extent(data);     		// 5,24 ==> min, max
+// d = d3.sum(data);        		// 284
+
+// d = d3.mean(data);           		 // 15.77777
+// d = d3.median(data);							 // 16
+// d = d3.quantile(data, 0.5);       // 12 #pro quantile dar certo, precisamos ordenar o array
+
+// d = d3.quantile(data.sort(d3.ascending), 0.5);       // 16  <== agora sim
+// d = d3.variance(data);          // 24.06535..
+// d = d3.deviation(data);         // 4.905645 ...        // desvio padrão
+
+// d = d3.shuffle(data);              // 18, 16, 14, 12, 10, 18, 5, 21, 15, 22, 19, 24, 17, 8, 20, 16, 16, 13
+// d = d3.merge([[data], [0]]);      // 5,16,18,10,12,14,13,15,16,8,24,17,18,19,16,21,22,20, 0
+d = d3.merge([[data], [10, 99]]); // 5,16,18,10,12,14,13,15,16,8,24,17,18,19,16,21,22,20, 10, 99
+
+// *** usando o segundo dataset
+// d = d3.max(data, (d) => d.a);          	// 18
+// d = d3.max(data, (d) => d.b);          	// 12
+// d = d3.extent(data, (d) => d.a);         //-2,18
+// d = d3.max(data, (d) => d.a);
+
+if (Array.isArray(d)) {
+  p.text(d.join(', '));
+} else {
+  p.text(d);
+}
 
 // ================================ aula ================================----
 // ================================ [] ================================---
