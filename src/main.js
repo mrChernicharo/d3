@@ -362,22 +362,34 @@ import { attrs } from 'd3-selection-multi';
 // ================================ aula ================================----
 // ================================ [Histogram] ================================---
 
-let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20];
+// let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20];
 
-let hist = d3.histogram();
+// let hist = d3.histogram();
 
-// hist.value((d) => d);
-// hist.domain(d3.extent(data));   // [5, 24]
-// hist.domain([0, 30]);
-// hist.thresholds([10, 15, 20]);
-hist.thresholds([10, 15, 16, 20, 22, 50]);
+// // hist.value((d) => d);
+// // hist.domain(d3.extent(data));   // [5, 24]
+// // hist.domain([0, 30]);
+// // hist.thresholds([10, 15, 20]);
+// hist.thresholds([10, 15, 16, 20, 22, 50]);
 
-let bins = hist(data);
+// let bins = hist(data);
 
-console.log(bins);
+// console.log(bins);
 
 // ================================ aula ================================----
-// ================================ [] ================================---
+// ================================ [data X datum] ================================---
+
+let d = [1, 2, 3];
+
+let p = d3
+  .select('body')
+  .selectAll('p')
+  .data(d)
+  .enter()
+  .append('p')
+  .text((d) => 'I am paragraph no ' + d);
+
+p.datum(d).text((d) => 'I am paragraph no ' + d);
 
 // ================================ aula ================================----
 // ================================ [] ================================---
