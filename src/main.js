@@ -379,23 +379,105 @@ import { attrs } from 'd3-selection-multi';
 // ================================ aula ================================----
 // ================================ [data X datum] ================================---
 
-let d = [1, 2, 3];
+// let d = [1, 2, 3];
 
-let p = d3
-  .select('body')
-  .selectAll('p')
-  .data(d)
-  .enter()
-  .append('p')
-  .text((d) => 'I am paragraph no ' + d);
+// let p = d3
+//   .select('body')
+//   .selectAll('p')
+//   .data(d)
+//   .enter()
+//   .append('p')
+//   .text((d) => 'I am paragraph no ' + d);
 
-p.datum(d).text((d) => 'I am paragraph no ' + d);
+// p.datum(d).text((d) => 'I am paragraph no ' + d);
 
-// ================================ aula ================================----
-// ================================ [] ================================---
+// ================================ aula 17 ================================----
+// ================================ [Dragging] ================================---
 
-// ================================ aula ================================----
-// ================================ [] ================================---
+let dim = {
+  width: 600,
+  height: 400,
+};
+
+let svg = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
+
+let circle = svg
+  .append('circle')
+  .attrs({
+    cx: 300,
+    cy: 200,
+    r: 50,
+    fill: '#08c8f8',
+  })
+  .on('click', function () {
+    d3.select(this).attr('fill', 'green');
+  });
+
+let drag = d3.drag();
+drag.clickDistance(100);
+
+drag.on('start', function () {
+  d3.select(this).attr('stroke', 'black');
+});
+
+drag.on('drag', function () {
+  let el = d3.select(this);
+  el.attr('cx', parseInt(el.attr('cx')) + d3.event.dx);
+  el.attr('cy', parseInt(el.attr('cy')) + d3.event.dy);
+  // console.log(d3.event);
+});
+
+drag.on('end', function () {
+  d3.select(this).attr('stroke', 'none');
+});
+
+circle.call(drag);
+
+// ================================ aula 17 - BIS ================================----
+// ================================ [Dragging - Bonus] ================================---
+
+// let dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// let svg = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
+
+// let circle = svg
+//   .append('circle')
+//   .attrs({
+//     cx: 300,
+//     cy: 200,
+//     r: 50,
+//     fill: '#08c8f8',
+//   })
+//   .on('click', function () {
+//     d3.select(this).attr(
+//       'fill',
+//       `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
+//         Math.random() * 255
+//       )},${Math.floor(Math.random() * 255)})`
+//     );
+//   });
+
+// let drag = d3.drag();
+
+// drag.on('start', function () {
+//   d3.select(this).attr('stroke', 'black');
+// });
+
+// drag.on('drag', function () {
+//   let el = d3.select(this);
+//   el.attr('cx', parseInt(el.attr('cx')) + d3.event.dx);
+//   el.attr('cy', parseInt(el.attr('cy')) + d3.event.dy);
+//   // console.log(d3.event);
+// });
+
+// drag.on('end', function () {
+//   d3.select(this).attr('stroke', 'none');
+// });
+
+// circle.call(drag);
 
 // ================================ aula ================================----
 // ================================ [] ================================---
