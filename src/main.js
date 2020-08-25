@@ -34,35 +34,53 @@ import * as d3 from "d3";
 // ================================ aula 04 ================================----
 // ================================ [enter() & exit()] ================================---
 
-let d = [1, 2, 3, 4, 5];
+// let d = [1, 2, 3, 4, 5];
 
-let body = d3.select("body");
+// let body = d3.select("body");
 
-let s = body
-  .selectAll("p")
+// let s = body
+//   .selectAll("p")
+//   .data(d)
+//   .text((d) => "I'm the paragraph no. " + d);
+
+// // enter
+// s.enter()
+//   .append("p")
+//   .text((d) => "I'm the paragraph no. " + d);
+
+// // overwrite d
+// d = [10, 20, 30];
+
+// s = body
+//   .selectAll("p")
+//   .data(d)
+//   .text((d) => "I'm the paragraph no. " + d);
+
+// // exit
+// s.exit().remove();
+
+// console.log(s);
+
+// ================================ aula 05 ================================----
+// ================================ [SVG] ================================---
+let d = [50, 100, 150, 200, 250];
+
+let svg = d3
+  .select("body")
+  .append("svg")
+  .style("background", "lightblue")
+  .attr("width", 400)
+  .attr("height", 300);
+
+svg
+  .selectAll("circle")
   .data(d)
-  .text((d) => "I'm the paragraph no. " + d);
-
-// enter
-s.enter()
-  .append("p")
-  .text((d) => "I'm the paragraph no. " + d);
-
-// overwrite d
-d = [10, 20, 30];
-
-s = body
-  .selectAll("p")
-  .data(d)
-  .text((d) => "I'm the paragraph no. " + d);
-
-// exit
-s.exit().remove();
-
-console.log(s);
-
-// ================================ aula ================================----
-// ================================ [] ================================---
+  .enter()
+  .append("circle")
+  .attr("cx", (d) => d)
+  .attr("cy", (d) => d)
+  .attr("r", (d) => (Math.random() * d) / 8)
+  .attr("fill", "green");
 
 // ================================ aula ================================----
 // ================================ [] ================================---
