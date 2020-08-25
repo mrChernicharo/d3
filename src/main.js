@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { attrs } from "d3-selection-multi";
 
 // ================================ aula 01 ================================---
 // ================================ [setup] ================================---
@@ -63,27 +64,51 @@ import * as d3 from "d3";
 
 // ================================ aula 05 ================================----
 // ================================ [SVG] ================================---
+// let d = [50, 100, 150, 200, 250];
+
+// let svg = d3
+//   .select("body")
+//   .append("svg")
+//   .style("background", "lightblue")
+//   .attr("width", 400)
+//   .attr("height", 300);
+
+// svg
+//   .selectAll("circle")
+//   .data(d)
+//   .enter()
+//   .append("circle")
+//   .attr("cx", (d) => d)
+//   .attr("cy", (d) => d)
+//   .attr("r", (d) => (Math.random() * d) / 8)
+//   .attr("fill", "green");
+
+// ================================ aula ================================----
+// ================================ [Selection-Multi] ================================---
+
+// ❯ yarn add d3-selection-multi
+
+let dim = {
+  width: 400,
+  height: 300,
+};
+
+let circleAttrs = {
+  cx: (d) => d,
+  cy: (d) => d,
+  r: (d) => (Math.random() * d) / 8,
+  fill: "red",
+};
+
 let d = [50, 100, 150, 200, 250];
 
 let svg = d3
   .select("body")
   .append("svg")
   .style("background", "lightblue")
-  .attr("width", 400)
-  .attr("height", 300);
+  .attrs(dim);
 
-svg
-  .selectAll("circle")
-  .data(d)
-  .enter()
-  .append("circle")
-  .attr("cx", (d) => d)
-  .attr("cy", (d) => d)
-  .attr("r", (d) => (Math.random() * d) / 8)
-  .attr("fill", "green");
-
-// ================================ aula ================================----
-// ================================ [] ================================---
+svg.selectAll("circle").data(d).enter().append("circle").attrs(circleAttrs);
 
 // ================================ aula ================================----
 // ================================ [] ================================---
