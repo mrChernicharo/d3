@@ -182,6 +182,41 @@ import { attrs } from "d3-selection-multi";
 // ================================ aula 09 ================================----
 // ================================ [Path Element] ================================---
 
+// let dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// let svg = d3
+//   .select("body")
+//   .append("svg")
+//   .style("background", "lightblue")
+//   .attrs(dim);
+
+// // "path"
+// let attributes = {
+//   d: `M 100,300
+// 		l 0,-200
+// 		L 300,200
+// 		l 200,-100
+// 		L 500,300
+// 		C 400,350 400,250 500,300
+// 		Z`,
+//   stroke: "purple",
+//   fill: "none",
+// };
+// svg.append("path").attrs(attributes);
+
+// // Letras maiúsculas pra coords Absolutas e minúsculas para coords Relativas
+
+// // M -> início
+// // L -> line
+// // C -> curve
+// // Z -> fechar a forma
+
+// ================================ aula 10 ================================----
+// ================================ [Appearance Attributes] ================================---
+
 let dim = {
   width: 600,
   height: 400,
@@ -193,29 +228,18 @@ let svg = d3
   .style("background", "lightblue")
   .attrs(dim);
 
-// "path"
 let attributes = {
-  d: `M 100,300
-		l 0,-200
-		L 300,200
-		l 200,-100
-		L 500,300
-		C 400,350 400,250 500,300
-		Z`,
-  stroke: "purple",
-  fill: "none",
+  points: "100,300 500,300 300,100",
+  stroke: "purple", // default: black
+  fill: "orange", // default: black
+  "stroke-width": 20,
+  opacity: 0.9,
+  "fill-opacity": 0.7,
+  "stroke-opacity": 0.4,
+  "stroke-dasharray": "30, 5, 10, 5",
+  cursor: "crosshair",
 };
-svg.append("path").attrs(attributes);
-
-// Letras maiúsculas pra coords Absolutas e minúsculas para coords Relativas
-
-// M -> início
-// L -> line
-// C -> curve
-// Z -> fechar a forma
-
-// ================================ aula 10 ================================----
-// ================================ [Appearance Attributes] ================================---
+svg.append("polygon").attrs(attributes);
 
 // ================================ aula ================================----
 // ================================ [] ================================---
