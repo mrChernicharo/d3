@@ -1,6 +1,8 @@
 import * as d3 from 'd3';
 import { attrs } from 'd3-selection-multi';
+/* 
 
+*/
 // ================================ aula 01 ================================---
 // ================================ [setup] ================================---
 
@@ -436,6 +438,55 @@ import { attrs } from 'd3-selection-multi';
 // ================================ aula 17 - BIS ================================----
 // ================================ [Dragging - Bonus] ================================---
 
+// let dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// let svg = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
+
+// // <elem>.on('click', function () {})
+// let circle = svg
+//   .append('circle')
+//   .attrs({
+//     cx: 300,
+//     cy: 200,
+//     r: 50,
+//     fill: '#08c8f8',
+//   })
+//   .on('click', function () {
+//     d3.select(this).attr(
+//       'fill',
+//       `rgb(0,${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+//     );
+//   });
+
+// let drag = d3.drag();
+
+// //  clickDistance
+// drag.clickDistance(200);
+
+// // drag.on('start' | 'drag'| 'end' , function () {})
+// drag.on('start', function () {
+//   d3.select(this).attr('stroke', 'black');
+// });
+
+// drag.on('drag', function () {
+//   let el = d3.select(this);
+//   el.attr('cx', parseInt(el.attr('cx')) + d3.event.dx);
+//   el.attr('cy', parseInt(el.attr('cy')) + d3.event.dy);
+//   // console.log(d3.event);
+// });
+
+// drag.on('end', function () {
+//   d3.select(this).attr('stroke', 'none');
+// });
+
+// circle.call(drag);
+
+// ================================ aula 18 ================================----
+// ================================ [Handling Events] ================================---
+
 let dim = {
   width: 600,
   height: 400,
@@ -443,44 +494,52 @@ let dim = {
 
 let svg = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
 
-// <elem>.on('click', function () {})
-let circle = svg
-  .append('circle')
-  .attrs({
-    cx: 300,
-    cy: 200,
-    r: 50,
-    fill: '#08c8f8',
+let circle = svg.append('circle').attrs({
+  cx: 300,
+  cy: 200,
+  r: 80,
+  fill: 'white',
+});
+
+circle
+  .on('mouseover', function (e) {
+    d3.select(this).attr('fill', 'blue');
   })
-  .on('click', function () {
-    d3.select(this).attr(
-      'fill',
-      `rgb(0,${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
-    );
+  .on('mouseleave', function (e) {
+    d3.select(this).attr('fill', 'dodgerblue');
+  })
+  .on('click', function (e) {
+    d3.select(this).attr('fill', 'orange');
+    console.log(d3.mouse(this));
+  })
+  .on('dblclick', function (e) {
+    d3.select(this).attr('fill', 'red');
   });
 
-let drag = d3.drag();
+/**/
+// ================================ aula ================================----
+// ================================ [] ================================---
 
-//  clickDistance
-drag.clickDistance(200);
+// ================================ aula ================================----
+// ================================ [] ================================---
 
-// drag.on('start' | 'drag'| 'end' , function () {})
-drag.on('start', function () {
-  d3.select(this).attr('stroke', 'black');
-});
+// ================================ aula ================================----
+// ================================ [] ================================---
 
-drag.on('drag', function () {
-  let el = d3.select(this);
-  el.attr('cx', parseInt(el.attr('cx')) + d3.event.dx);
-  el.attr('cy', parseInt(el.attr('cy')) + d3.event.dy);
-  // console.log(d3.event);
-});
+// ================================ aula ================================----
+// ================================ [] ================================---
 
-drag.on('end', function () {
-  d3.select(this).attr('stroke', 'none');
-});
+// ================================ aula ================================----
+// ================================ [] ================================---
 
-circle.call(drag);
+// ================================ aula ================================----
+// ================================ [] ================================---
+
+// ================================ aula ================================----
+// ================================ [] ================================---
+
+// ================================ aula ================================----
+// ================================ [] ================================---
 
 // ================================ aula ================================----
 // ================================ [] ================================---
