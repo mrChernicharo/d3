@@ -308,7 +308,7 @@ import { attrs } from 'd3-selection-multi';
 // ================================ [Statistical Functions] ================================---
 
 //primeiro dataset
-let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20];
+// let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20];
 
 // segundo dataset
 // data = [
@@ -317,15 +317,16 @@ let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20
 //   { a: 18, b: 7 },
 // ];
 
-d3.select('body').append('p').style('font-size', '24px').text(data.join(', '));
+// d3.select('body').append('p').style('font-size', '24px').text(data.join(', '));
 
-d3.select('body').append('hr');
+// d3.select('body').append('hr');
 
-let p = d3.select('body').append('p').style('font-size', '24px');
+// let p = d3.select('body').append('p').style('font-size', '24px');
 
-let d;
+// let d;
 
-// # funções estatísticas: min, max, mean, extent ...
+// ------------------------
+// # funções estatísticas: min, max, mean, extent, sum, median, quantile, ascending, descending, shuffle, merge ...
 
 // *** usando o primeiro dataset
 // d = d3.max(data);          	// 24
@@ -343,22 +344,37 @@ let d;
 
 // d = d3.shuffle(data);              // 18, 16, 14, 12, 10, 18, 5, 21, 15, 22, 19, 24, 17, 8, 20, 16, 16, 13
 // d = d3.merge([[data], [0]]);      // 5,16,18,10,12,14,13,15,16,8,24,17,18,19,16,21,22,20, 0
-d = d3.merge([[data], [10, 99]]); // 5,16,18,10,12,14,13,15,16,8,24,17,18,19,16,21,22,20, 10, 99
+// d = d3.merge([[data], [10, 99]]); // 5,16,18,10,12,14,13,15,16,8,24,17,18,19,16,21,22,20, 10, 99
 
 // *** usando o segundo dataset
 // d = d3.max(data, (d) => d.a);          	// 18
 // d = d3.max(data, (d) => d.b);          	// 12
 // d = d3.extent(data, (d) => d.a);         //-2,18
 // d = d3.max(data, (d) => d.a);
+// ------------------------
 
-if (Array.isArray(d)) {
-  p.text(d.join(', '));
-} else {
-  p.text(d);
-}
+// if (Array.isArray(d)) {
+//   p.text(d.join(', '));
+// } else {
+//   p.text(d);
+// }
 
 // ================================ aula ================================----
-// ================================ [] ================================---
+// ================================ [Histogram] ================================---
+
+let data = [5, 16, 18, 10, 12, 14, 13, 15, 16, 8, 24, 17, 18, 19, 16, 21, 22, 20];
+
+let hist = d3.histogram();
+
+// hist.value((d) => d);
+// hist.domain(d3.extent(data));   // [5, 24]
+// hist.domain([0, 30]);
+// hist.thresholds([10, 15, 20]);
+hist.thresholds([10, 15, 16, 20, 22, 50]);
+
+let bins = hist(data);
+
+console.log(bins);
 
 // ================================ aula ================================----
 // ================================ [] ================================---
