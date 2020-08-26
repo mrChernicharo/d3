@@ -223,33 +223,55 @@ import { color } from 'd3';
 
 // ================================ aula 26 ================================----
 // ================================ [Diverging Scales] ================================---
+
+// const dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// const svgCanvas = d3.select('body').append('svg').style('background', 'black').attrs(dim);
+
+// let scale = d3.scaleDiverging([0, 500, 600], d3.interpolateTurbo);
+
+// svgCanvas
+//   .selectAll('line')
+//   .data(d3.range(0, 600, 6))
+//   .enter()
+//   .append('line')
+//   .attrs({
+//     x1: (d) => d,
+//     x2: (d) => d,
+//     y1: 0,
+//     y2: 400,
+//     stroke: (d) => scale(d),
+//     'stroke-width': '2px',
+//   });
+
+// ================================ aula 27 ================================----
+// ================================ [TimeScale] ================================---
+
 const dim = {
   width: 600,
   height: 400,
 };
 
-const svgCanvas = d3.select('body').append('svg').style('background', 'black').attrs(dim);
+const svgCanvas = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
 
-let scale = d3.scaleDiverging([0, 500, 600], d3.interpolateTurbo);
+let timeScale = d3
+  .scaleTime()
+  .domain([new Date(2020, 0, 1), new Date(2020, 11, 31)])
+  .range([50, 350]);
+
+let dates = timeScale.ticks(d3.timeMonth.every(1));
+
+let dateFormat = d3.timeFormat('%Y/%m');
+
+console.log(dates);
 
 svgCanvas
-  .selectAll('line')
-  .data(d3.range(0, 600, 6))
+  .selectAll('text')
+  .data(dates)
   .enter()
-  .append('line')
-  .attrs({
-    x1: (d) => d,
-    x2: (d) => d,
-    y1: 0,
-    y2: 400,
-    stroke: (d) => scale(d),
-    'stroke-width': '2px',
-  });
-// ================================ aula 27 ================================----
-// ================================ [TimeScale] ================================---
-
-// ================================ aula 28 ================================----
-// ================================ [] ================================---
-
-// ================================ aula 29 ================================----
-// ================================ [] ================================---
+  .append('text')
+  .attrs({ x: 50, y: (d) => timeScale(d), 'font-size': 12 })
+  .text((d) => dateFormat(d));
