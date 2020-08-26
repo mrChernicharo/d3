@@ -36,25 +36,51 @@ let circleAttrs = {
   fill: 'white',
   stroke: 'dodgerblue',
   'stroke-width': 3,
+  cursor: 'grab',
 };
-let circle = canvas.append('circle').attrs(circleAttrs);
+let circle = canvas
+  .append('circle')
+  .attrs(circleAttrs)
+
+  .on('click', function (e) {
+    let el = d3.select(this);
+    el.attr('fill') === 'white'
+      ? el.attr('fill', 'dodgerblue')
+      : el.attr('fill', 'white');
+  });
+
+let circleLabel = canvas
+  .append('text')
+  .attrs({
+    x: 50,
+    y: 200,
+    'text-anchor': 'middle',
+    'alignment-baseline': 'middle',
+  })
+  .text('50')
+  .style('pointer-events', 'none');
 
 let circleDrag = d3.drag();
 
-circle.on('click', function (e) {
-  let el = d3.select(this);
-  el.attr('fill') === 'white' ? el.attr('fill', 'dodgerblue') : el.attr('fill', 'white');
-});
-
 circleDrag.on('start', function (e) {
-  d3.select(this).attr('stroke-width', '12px');
+  let el = d3.select(this);
+  el.attrs({ 'stroke-width': '8px', cursor: 'none' });
 });
 circleDrag.on('drag', function (e) {
   let el = d3.select(this);
-  el.attr('cx', parseInt(el.attr('cx')) + d3.event.dx);
+  let xPos = parseInt(el.attr('cx'));
+  let newPos = xPos + d3.event.dx;
+
+  if (newPos < 50) newPos = 50;
+  if (newPos > 750) newPos = 750;
+  el.attr('cx', newPos);
+
+  pushLines();
 });
+
 circleDrag.on('end', function (e) {
-  d3.select(this).attr('stroke-width', 3);
+  let el = d3.select(this);
+  el.attrs({ 'stroke-width': '8px', cursor: 'grab' });
 });
 
 circle.call(circleDrag);
@@ -63,5 +89,21 @@ function pushLines() {
   lines.each(function (d, i) {
     let el = d3.select(this);
     let x = parseInt(el.attr('x1'));
+    let sliderX = parseInt(circle.attr('cx'));
+    let dx = Math.abs(sliderX - x);
+    let r = 25;
+    // há colisão entre o círculo e a linha?
+    if (x >= sliderX - r && x <= sliderX + r) {
+      // calcule o deltaY
+      let dy = Math.sqrt(Math.abs(r ** 2 - dx ** 2));
+      el.attr('y1', 200 + dy);
+      el.attr('y2', i % 10 === 0 ? 220 + dy : 210 + dy);
+    } else {
+      el.attr('y1', 200);
+      el.attr('y2', i % 10 === 0 ? 220 : 210);
+    }
+    circleLabel.text(circle.attr('cx')).attr('x', circle.attr('cx'));
   });
 }
+
+pushLines();
