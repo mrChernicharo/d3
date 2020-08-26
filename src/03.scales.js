@@ -71,46 +71,110 @@ import { color } from 'd3';
 // ================================ aula 23 ================================----
 // ================================ [Ordinal Scales] ================================---
 
+// const dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// const svgCanvas = d3
+//   .select('body')
+//   .append('svg')
+//   .style('background', 'lightgray')
+//   .attrs(dim);
+
+// let data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]; // 110, 120];
+// let months = [
+//   'Jan',
+//   'Fev',
+//   'Mar',
+//   'Abr',
+//   'Mai',
+//   'Jun',
+//   'Jul',
+//   'Ago',
+//   'Set',
+//   'Out',
+//   'Nov',
+//   'Dez',
+// ];
+
+// let scale = d3.scaleOrdinal().domain(months).range(data);
+
+// console.log(scale('Jan'));
+// console.log(scale('Fev'));
+// console.log(scale('Ago'));
+// console.log(scale('Set'));
+// console.log(scale('Out'));
+// console.log(scale('Nov'));
+// console.log(scale('Dez'));
+// console.log(scale('foo'));
+// console.log(scale('baz'));
+
+// ==================== teste  =========================
+
+// let data2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// let scale = d3.scaleOrdinal().domain(data2).range(months);
+
+// console.log(scale(0));
+// console.log(scale(1));
+// console.log(scale(2));
+// console.log(scale(3));
+// console.log(scale(10));
+// console.log(scale(11));
+// console.log(scale(-1));
+
+// ================================ aula 24 ================================----
+// ================================ [ScaleBand] ================================---
+
 const dim = {
   width: 600,
   height: 400,
 };
 
-const svgCanvas = d3
-  .select('body')
-  .append('svg')
-  .style('background', 'lightgray')
-  .attrs(dim);
+const svgCanvas = d3.select('body').append('svg').style('background', 'lightgray').attrs(dim);
 
-// let data = [5, 12, 32, 80, 108, 152, 320, 382, 512, 598, 700, 825];
-let data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]; // 110, 120];
-let months = [
-  'Jan',
-  'Fev',
-  'Mar',
-  'Abr',
-  'Mai',
-  'Jun',
-  'Jul',
-  'Ago',
-  'Set',
-  'Out',
-  'Nov',
-  'Dez',
-];
+let data = [10, 29, 130, 240, 250, 360, 370, 610, 820, 480, 690, 510];
+let months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 
-let scale = d3.scaleOrdinal().domain(months).range(data);
+// desenhar duas linhas verticais nas bordas do canvas
+svgCanvas
+  .selectAll('line')
+  .data([50, 550])
+  .enter()
+  .append('line')
+  .attrs({
+    x1: (d) => d,
+    x2: (d) => d,
+    y1: 50,
+    y2: 350,
+    stroke: 'black',
+  });
 
-console.log(scale('Jan'));
-console.log(scale('Fev'));
-console.log(scale('Set'));
-console.log(scale('Out'));
-console.log(scale('Nov'));
-console.log(scale('Dez'));
-console.log(scale('foo'));
+// juntando domain e range: scaleLinear([<domain>], [<range])
+let scaleY = d3.scaleLinear([0, d3.max(data)], [350, 50]);
 
-// ================================ aula 24 ================================----
-// ================================ [] ================================---
+let scaleX = d3.scaleBand().domain(months).range([50, 550]).paddingInner(0.1).paddingOuter(0.3);
+// .padding(0.1);
+
+console.log(scaleY(80));
+console.log(scaleY(900));
+console.log(scaleX('Abr'));
+console.log(scaleX('Mai'));
+
+// desenhar as barras
+svgCanvas
+  .selectAll('rect')
+  .data(months)
+  .enter()
+  .append('rect')
+  .attrs({
+    x: (d) => scaleX(d),
+    y: (d, i) => scaleY(data[i]),
+    width: scaleX.bandwidth(),
+    height: (d, i) => scaleY(0) - scaleY(data[i]),
+    fill: '#fd6900',
+  });
 
 // ================================ aula 25 ================================----
 // ================================ [] ================================---
