@@ -44,6 +44,10 @@ function changeData() {
   // 1.2 pra criar as escalas
   let scaleX = d3.scaleLinear().domain([minWeight, maxWeight]).range([40, 680]);
   let scaleY = d3.scaleLinear().domain([minHeight, maxHeight]).range([450, 50]);
+  let colorScale = d3.scaleDiverging(
+    [maxWeight + 1, (minWeight + maxWeight) / 2, minWeight + 1],
+    d3.interpolateCool
+  );
 
   // 1.3 e os eixos
   let axisX = d3.axisBottom(scaleX);
@@ -68,6 +72,6 @@ function changeData() {
       cx: (d) => scaleX(d.weight),
       cy: (d) => scaleY(d.height),
       r: 10,
-      fill: 'black',
+      fill: (d) => colorScale(d.weight),
     });
 }
