@@ -9,7 +9,7 @@ let svg = d3
   .attrs(dim)
   .on('click', clicked);
 
-let colors = ['tomato', 'green'];
+let colors = ['tomato', '#10ae44'];
 let dataset = d3.range(40).map(function () {
   return {
     r: Math.round(Math.random() * 10) + 5,
@@ -44,6 +44,7 @@ let labels = svg
     'font-size': 8,
     'text-anchor': 'middle', // end, middle, start
     'alignment-baseline': 'central', // middle, hanging, central
+    'pointer-events': 'none',
   })
   .text((d, i) => i);
 
