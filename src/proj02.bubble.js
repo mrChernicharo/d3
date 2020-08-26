@@ -99,7 +99,7 @@ function draw() {
     .range([8, 20]);
 
   let colorScale = d3
-    .scaleDiverging(d3.interpolateSpectral)
+    .scaleDiverging(d3.interpolateMagma)
     .domain([
       d3.max(dataset, (d) => d.weight / d.height),
       d3.median(dataset, (d) => d.weight / d.height),
