@@ -9,8 +9,8 @@ module.exports = {
   // entry: './src/05.animation.js',
   // entry: './src/my-slider.js',
   // entry: './src/proj01.slider.js',
-  entry: './src/my-bubble.js',
-  // entry: './src/proj02.bubble.js',
+  // entry: './src/my-bubble.js',
+  entry: './src/proj02.bubble.js',
 
   devServer: {
     contentBase: './dist',
