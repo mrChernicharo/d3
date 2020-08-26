@@ -6,10 +6,31 @@ const dim = {
   height: 400,
 };
 
-const canvas = d3
+const svgCanvas = d3
   .select('body')
   .append('svg')
   .style('background', 'lightgray')
   .attrs(dim);
 
 let data = [5, 12, 32, 80, 108, 152, 320, 512, 700, 825];
+
+let scale = d3.scaleLinear().domain(d3.extent(data)).rangeRound([50, 551]);
+// let scale = d3.scalePow().domain(d3.extent(data)).rangeRound([50, 551]);
+// let scale = d3.scalePow().domain(d3.extent(data)).rangeRound([50, 551]).exponent();
+// let scale = d3.scalePow().domain(d3.extent(data)).rangeRound([50, 551]).exponent(0.5);
+// let scale = d3.scaleSqrt().domain(d3.extent(data)).rangeRound([50, 551]);
+// let scale = d3.scaleLog().domain(d3.extent(data)).rangeRound([50, 551]);
+// let scale = d3.scaleLog().domain(d3.extent(data)).rangeRound([50, 551]).base(110);
+
+svgCanvas
+  .selectAll('circle')
+  .data(data)
+  .enter()
+  .append('circle')
+  .attrs({ cx: (d) => scale(d), cy: 200, r: 10, opacity: 0.5 });
+
+// console.log(scale(5));
+// console.log(scale(10));
+// console.log(scale(300));
+// console.log(scale(825));
+// console.log(scale(2000));
