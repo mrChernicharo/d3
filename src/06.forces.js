@@ -226,8 +226,7 @@ let links = svg
   .data(dataset.links)
   .enter()
   .append('line')
-  .attrs({ stroke: 'black' })
-  .call(drag);
+  .attrs({ stroke: 'black' });
 
 // tick -> intervalo no internal clock da animação
 sim.on('tick', function (d) {
@@ -263,7 +262,7 @@ sim.force('yForce').strength(0.18);
 // Dragging
 
 function startDragging(d) {
-  if (!d3.event.active) sim.alphaTarget(0.1).restart();
+  if (!d3.event.active) sim.alphaTarget(0.009).restart();
   d.fx = d.x;
   d.fy = d.y;
 }
@@ -274,7 +273,7 @@ function dragging(d) {
 }
 
 function endDragging(d) {
-  if (!d3.event.active) sim.alphaTarget(0.2);
+  if (!d3.event.active) sim.alphaTarget(0);
   d.fx = null;
   d.fy = null;
 }
