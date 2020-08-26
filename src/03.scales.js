@@ -179,56 +179,77 @@ import { color } from 'd3';
 // ================================ aula 25 ================================----
 // ================================ [ScalePoint] ================================---
 
+// const dim = {
+//   width: 600,
+//   height: 400,
+// };
+
+// const svgCanvas = d3.select('body').append('svg').style('background', 'lightgray').attrs(dim);
+
+// let data = [10, 29, 130, 240, 250, 360, 370, 610, 820, 480, 690, 510];
+// let months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+// // desenhar duas linhas verticais nas bordas do canvas
+// svgCanvas
+//   .selectAll('line')
+//   .data([50, 550])
+//   .enter()
+//   .append('line')
+//   .attrs({
+//     x1: (d) => d,
+//     x2: (d) => d,
+//     y1: 50,
+//     y2: 350,
+//     stroke: 'black',
+//   });
+
+// // juntando domain e range: scaleLinear([<domain>], [<range])
+// let scaleY = d3.scaleLinear([0, d3.max(data)], [350, 50]);
+
+// let scaleX = d3.scalePoint().domain(months).range([50, 550]).padding(0.8);
+
+// // desenhar as barras
+// svgCanvas
+//   .selectAll('circle')
+//   .data(months)
+//   .enter()
+//   .append('circle')
+//   .attrs({
+//     cx: (d) => scaleX(d),
+//     cy: (d, i) => scaleY(data[i]),
+//     r: 10,
+//     fill: '#fd6900',
+//   });
+
+// ================================ aula 26 ================================----
+// ================================ [Diverging Scales] ================================---
 const dim = {
   width: 600,
   height: 400,
 };
 
-const svgCanvas = d3.select('body').append('svg').style('background', 'lightgray').attrs(dim);
+const svgCanvas = d3.select('body').append('svg').style('background', 'black').attrs(dim);
 
-let data = [10, 29, 130, 240, 250, 360, 370, 610, 820, 480, 690, 510];
-let months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+let scale = d3.scaleDiverging([0, 500, 600], d3.interpolateTurbo);
 
-// desenhar duas linhas verticais nas bordas do canvas
 svgCanvas
   .selectAll('line')
-  .data([50, 550])
+  .data(d3.range(0, 600, 6))
   .enter()
   .append('line')
   .attrs({
     x1: (d) => d,
     x2: (d) => d,
-    y1: 50,
-    y2: 350,
-    stroke: 'black',
+    y1: 0,
+    y2: 400,
+    stroke: (d) => scale(d),
+    'stroke-width': '2px',
   });
+// ================================ aula 27 ================================----
+// ================================ [TimeScale] ================================---
 
-// juntando domain e range: scaleLinear([<domain>], [<range])
-let scaleY = d3.scaleLinear([0, d3.max(data)], [350, 50]);
-
-let scaleX = d3.scalePoint().domain(months).range([50, 550]).padding(0.8);
-
-// desenhar as barras
-svgCanvas
-  .selectAll('circle')
-  .data(months)
-  .enter()
-  .append('circle')
-  .attrs({
-    cx: (d) => scaleX(d),
-    cy: (d, i) => scaleY(data[i]),
-    r: 10,
-    fill: '#fd6900',
-  });
-
-// ================================ aula 25 ================================----
+// ================================ aula 28 ================================----
 // ================================ [] ================================---
 
-// ================================ aula 25 ================================----
-// ================================ [] ================================---
-
-// ================================ aula 25 ================================----
-// ================================ [] ================================---
-
-// ================================ aula 25 ================================----
+// ================================ aula 29 ================================----
 // ================================ [] ================================---
