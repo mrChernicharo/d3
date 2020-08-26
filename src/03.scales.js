@@ -255,7 +255,11 @@ const dim = {
   height: 400,
 };
 
-const svgCanvas = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
+const svgCanvas = d3
+  .select('body')
+  .append('svg')
+  .style('background', 'lightgrey')
+  .attrs(dim);
 
 let timeScale = d3
   .scaleTime()
