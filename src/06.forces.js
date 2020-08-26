@@ -87,6 +87,91 @@ length: 7
 // ================================ aula 36 ================================----
 // ================================ [Forces] ================================---
 
+// const dim = {
+//   width: 600,
+//   height: 400,
+// };
+// const svg = d3.select('body').append('svg').style('background', 'lightgrey').attrs(dim);
+
+// let dataset = {
+//   nodes: [
+//     { id: 'Point0' },
+//     { id: 'Point1' },
+//     { id: 'Point2' },
+//     { id: 'Point3' },
+//     { id: 'PointA' },
+//     { id: 'PointB' },
+//     { id: 'PointC' },
+//   ],
+//   links: [
+//     { source: 'Point1', target: 'Point0', value: 20 },
+//     { source: 'Point2', target: 'Point0', value: 60 },
+//     { source: 'Point3', target: 'Point0', value: 100 },
+//     { source: 'Point0', target: 'PointA', value: 200 },
+//     { source: 'PointB', target: 'PointA', value: 130 },
+//     { source: 'PointC', target: 'PointA', value: 90 },
+//   ],
+// };
+
+// // criar simulação de
+// let sim = d3.forceSimulation();
+
+// sim.nodes(dataset.nodes);
+
+// console.log(sim.nodes());
+
+// let nodes = svg
+//   .append('g')
+//   .selectAll('circle')
+//   .data(dataset.nodes)
+//   .enter()
+//   .append('circle')
+//   .attrs({ r: 10 });
+
+// let links = svg
+//   .append('g')
+//   .selectAll('line')
+//   .data(dataset.links)
+//   .enter()
+//   .append('line')
+//   .attrs({ stroke: 'black' });
+
+// // tick -> intervalo no internal clock da animação
+// sim.on('tick', function (d) {
+//   nodes.attrs({
+//     cx: (d) => d.x,
+//     cy: (d) => d.y,
+//   });
+//   links.attrs({
+//     x1: (d) => d.source.x,
+//     y1: (d) => d.source.y,
+//     x2: (d) => d.target.x,
+//     y2: (d) => d.target.y,
+//   });
+// });
+
+// // apesar do desenho estar "pronto", precisamos criar uma force
+// sim
+//   .force('center', d3.forceCenter(300, 200))
+//   .force('collide', d3.forceCollide(60))
+//   .force('nanyBody', d3.forceManyBody())
+//   .force('radial', d3.forceRadial(100, 300, 200)) // r, x, y
+//   .force('xForce', d3.forceX())
+//   .force('yForce', d3.forceY())
+//   .force(
+//     'link',
+//     d3.forceLink(dataset.links).id((d) => d.id)
+//   );
+
+// sim.force('link').distance((d) => d.value);
+
+// sim.force('radial').strength(0.2);
+// sim.force('xForce').strength(0.6);
+// sim.force('yForce').strength(1.2);
+
+// ================================ aula 36 ================================----
+// ================================ [Force Simulation - Drag] ================================---
+
 const dim = {
   width: 600,
   height: 400,
@@ -96,7 +181,7 @@ const svg = d3.select('body').append('svg').style('background', 'lightgrey').att
 let dataset = {
   nodes: [
     { id: 'Point0' },
-    { id: 'Point1' },
+    // { id: 'Point1' },
     { id: 'Point2' },
     { id: 'Point3' },
     { id: 'PointA' },
@@ -104,7 +189,7 @@ let dataset = {
     { id: 'PointC' },
   ],
   links: [
-    { source: 'Point1', target: 'Point0', value: 20 },
+    // { source: 'Point1', target: 'Point0', value: 20 },
     { source: 'Point2', target: 'Point0', value: 60 },
     { source: 'Point3', target: 'Point0', value: 100 },
     { source: 'Point0', target: 'PointA', value: 200 },
@@ -118,7 +203,13 @@ let sim = d3.forceSimulation();
 
 sim.nodes(dataset.nodes);
 
-console.log(sim.nodes());
+// console.log(sim.nodes());
+
+let drag = d3
+  .drag()
+  .on('start', startDragging)
+  .on('drag', dragging)
+  .on('end', endDragging);
 
 let nodes = svg
   .append('g')
@@ -126,7 +217,8 @@ let nodes = svg
   .data(dataset.nodes)
   .enter()
   .append('circle')
-  .attrs({ r: 10 });
+  .attrs({ r: 10 })
+  .call(drag);
 
 let links = svg
   .append('g')
@@ -134,7 +226,8 @@ let links = svg
   .data(dataset.links)
   .enter()
   .append('line')
-  .attrs({ stroke: 'black' });
+  .attrs({ stroke: 'black' })
+  .call(drag);
 
 // tick -> intervalo no internal clock da animação
 sim.on('tick', function (d) {
@@ -150,12 +243,11 @@ sim.on('tick', function (d) {
   });
 });
 
-// apesar do desenho estar "pronto", precisamos criar uma force
 sim
   .force('center', d3.forceCenter(300, 200))
-  .force('collide', d3.forceCollide(60))
-  .force('nanyBody', d3.forceManyBody())
-  .force('radial', d3.forceRadial(100, 300, 200)) // r, x, y
+  .force('collide', d3.forceCollide(30))
+  .force('manyBody', d3.forceManyBody())
+  .force('radial', d3.forceRadial(150, 300, 200))
   .force('xForce', d3.forceX())
   .force('yForce', d3.forceY())
   .force(
@@ -164,13 +256,28 @@ sim
   );
 
 sim.force('link').distance((d) => d.value);
+sim.force('radial').strength(0.5);
+sim.force('xForce').strength(0.29);
+sim.force('yForce').strength(0.18);
 
-sim.force('radial').strength(0.2);
-sim.force('xForce').strength(0.6);
-sim.force('yForce').strength(1.2);
+// Dragging
 
-// ================================ aula 36 ================================----
-// ================================ [Forces] ================================---
+function startDragging(d) {
+  if (!d3.event.active) sim.alphaTarget(0.1).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragging(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function endDragging(d) {
+  if (!d3.event.active) sim.alphaTarget(0.2);
+  d.fx = null;
+  d.fy = null;
+}
 
 // ================================ aula 36 ================================----
 // ================================ [Forces] ================================---
