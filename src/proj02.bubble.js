@@ -14,6 +14,17 @@ d3.select('body')
   .text('Change data')
   .on('click', changeData);
 
+// clipPath Attrs
+const plotArea = {
+  x: 50,
+  y: 50,
+  width: 620,
+  height: 400,
+};
+
+// clipPath
+svg.append('clipPath').attr('id', 'plot-area').append('rect').attrs(plotArea);
+
 // grid
 svg.append('g').attrs({
   transform: 'translate(0, 450)',
@@ -44,6 +55,9 @@ svg.append('polyline').attrs({
   fill: 'none',
   stroke: 'black',
 });
+
+// criar container
+let container = svg.append('g').attr('clip-path', 'url(#plot-area');
 
 let dataset;
 changeData();
@@ -128,7 +142,8 @@ function draw() {
   };
 
   // criar referências de círculos no canvas => Empty selection to bind data
-  let circles = svg.selectAll('circle').data(dataset);
+  // let circles = svg.selectAll('circle').data(dataset);
+  let circles = container.selectAll('circle').data(dataset);
 
   // 1. fluxo de círculos ainda não criados:
   circles
