@@ -94,7 +94,7 @@ function pushLines() {
     let r = 25;
     // há colisão entre o círculo e a linha?
     if (x >= sliderX - r && x <= sliderX + r) {
-      // calcule o deltaY
+      // se sim, calcule o deltaY
       let dy = Math.sqrt(Math.abs(r ** 2 - dx ** 2));
       el.attr('y1', 200 + dy);
       el.attr('y2', i % 10 === 0 ? 220 + dy : 210 + dy);
