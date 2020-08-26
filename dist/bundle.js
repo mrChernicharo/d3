@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/main.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/slider.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -6350,15 +6350,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dis
 
 /***/ }),
 
-/***/ "./src/main.js":
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
+/***/ "./src/slider.js":
+/*!***********************!*\
+  !*** ./src/slider.js ***!
+  \***********************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\n\nd3__WEBPACK_IMPORTED_MODULE_0__[\"select\"](\"body\").append(\"h1\").html(\"hello D3!\");\n\nd3__WEBPACK_IMPORTED_MODULE_0__[\"select\"](\"body\").style(\"background\", \"lightblue\");\n\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\n// import { attrs } from 'd3-selection-multi';\n\nalert('ha!');\n\nlet dimensions = {\n  width: 800,\n  height: 400,\n};\n\nlet myRange = d3__WEBPACK_IMPORTED_MODULE_0__[\"range\"](50, 751, 5);\n\nlet canvas = select('body')\n  .append('svg')\n  .style('background', 'lightgrey')\n  .attrs(dimensions);\n\n\n//# sourceURL=webpack:///./src/slider.js?");
 
 /***/ })
 

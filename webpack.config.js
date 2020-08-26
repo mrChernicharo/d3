@@ -1,13 +1,15 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  mode: "development",
-  entry: "./src/main.js",
+  mode: 'development',
+  // entry: "./src/main.js",
+  // entry: './src/my-slider.js',
+  entry: './src/slider.js',
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
 };
