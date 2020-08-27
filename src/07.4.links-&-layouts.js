@@ -78,6 +78,7 @@ let labels = g
   .append('text')
   .attr('text-anchor', 'middle');
 
+// verticalTree
 function verticalTree() {
   g.transition().duration(1000).attr('transform', 'translate(50, 50)');
   // olha lá o treeGenerator!
@@ -109,7 +110,7 @@ function verticalTree() {
     .attrs({ x: (d) => d.x, y: (d) => d.y - 10 })
     .text((d) => d.data.name);
 }
-
+// verticalCluster
 function verticalCluster() {
   g.transition().duration(1000).attr('transform', 'translate(50, 50)');
   let layout = d3.cluster().size([500, 300]); // <- só muda aqui. Layout CLUSTER
@@ -138,7 +139,7 @@ function verticalCluster() {
     .attrs({ x: (d) => d.x, y: (d) => d.y - 10 })
     .text((d) => d.data.name);
 }
-
+// horizontalTree
 function horizontalTree() {
   g.transition().duration(1000).attr('transform', 'translate(50, 50)');
   let layout = d3.tree().size([300, 500]); // <- layout TREE e inverte x com y
@@ -168,7 +169,7 @@ function horizontalTree() {
     .attrs({ x: (d) => d.y, y: (d) => d.x - 10 }) // <- inverte x com y
     .text((d) => d.data.name);
 }
-
+// horizontalCluster
 function horizontalCluster() {
   g.transition().duration(1000).attr('transform', 'translate(50, 50)');
   let layout = d3.cluster().size([300, 500]); // <- layout CLUSTER e inverte x com y
@@ -198,11 +199,11 @@ function horizontalCluster() {
     .attrs({ x: (d) => d.y, y: (d) => d.x - 10 }) // <- inverte x com y
     .text((d) => d.data.name);
 }
-
+// radialTree
 function radialTree() {
   g.transition().duration(1000).attr('transform', 'translate(300, 200)');
   // olha lá o treeGenerator!
-  let layout = d3.tree().size([Math.PI * 2, 150]); // size([angle: 360deg, radius: 150px])
+  let layout = d3.tree().size([Math.PI * 2, 200]); // size([angle: 360deg, radius: 150px])
 
   layout(rootNode);
 
@@ -237,11 +238,11 @@ function radialTree() {
     })
     .text((d) => d.data.name);
 }
-
+// radialCluster
 function radialCluster() {
   g.transition().duration(1000).attr('transform', 'translate(300, 200)');
   // olha lá o treeGenerator!
-  let layout = d3.cluster().size([Math.PI * 2, 150]); // só trocar por CLUSTER
+  let layout = d3.cluster().size([Math.PI * 2, 200]); // só trocar por CLUSTER
 
   layout(rootNode);
 
@@ -274,9 +275,9 @@ function radialCluster() {
     .text((d) => d.data.name);
 }
 
-verticalTree();
-
 function radialPoint(x, y) {
   x -= Math.PI / 2;
   return [y * Math.cos(x), y * Math.sin(x)];
 }
+
+verticalTree();
