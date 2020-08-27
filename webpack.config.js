@@ -14,13 +14,14 @@ module.exports = {
   // entry: './src/07.3.arc-&-pie-generator.js',
   // entry: './src/07.4.links-&-layouts.js',
   // entry: './src/07.5.symbol-generator.js',
-  entry: './src/07.6.stacks.js',
-  // entry: './src/proj03.force.js',
+  // entry: './src/07.6.stacks.js',
   // entry: './src/my-slider.js',
+  // entry: './src/my-bubble.js',
   // entry: './src/my-force.js',
   // entry: './src/proj01.slider.js',
-  // entry: './src/my-bubble.js',
   // entry: './src/proj02.bubble.js',
+  // entry: './src/proj03.force.js',
+  entry: './src/proj04.stream.js',
 
   devServer: {
     contentBase: './dist',
