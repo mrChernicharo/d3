@@ -10,7 +10,7 @@ let svg = d3
   .on('click', clicked);
 
 let colors = ['tomato', '#10ae44'];
-let dataset = d3.range(40).map(function () {
+let dataset = d3.range(140).map(function () {
   return {
     r: Math.round(Math.random() * 10) + 5,
     color: colors[Math.round(Math.random())],

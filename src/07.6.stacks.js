@@ -8,7 +8,7 @@ let svg = d3.select('body').append('svg').style('background', 'lightgrey').attrs
 let data = [
   { a: 40, b: 30, c: 10, d: 50 },
   { a: 45, b: 31, c: 10, d: 50 },
-  { a: 42, b: 34, c: 0, d: 0 },
+  { a: 42, b: 34, c: 10, d: 2 },
   { a: 38, b: 29, c: 15, d: 40 },
   { a: 21, b: 25, c: 20, d: 52 },
   { a: 40, b: 12, c: 18, d: 4 },
@@ -16,6 +16,7 @@ let data = [
   { a: 35, b: 22, c: 22, d: 45 },
   { a: 35, b: 28, c: 64, d: 42 },
   { a: 36, b: 34, c: 30, d: 41 },
+  { a: 31, b: 54, c: 20, d: 61 },
 ];
 
 // reshape data to have baseline for the next element
