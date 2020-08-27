@@ -244,7 +244,7 @@ sim.on('tick', function (d) {
 
 sim
   .force('center', d3.forceCenter(300, 200))
-  .force('collide', d3.forceCollide(30))
+  .force('collide', d3.forceCollide(3))
   .force('manyBody', d3.forceManyBody())
   .force('radial', d3.forceRadial(150, 300, 200))
   .force('xForce', d3.forceX())
@@ -262,7 +262,7 @@ sim.force('yForce').strength(0.18);
 // Dragging
 
 function startDragging(d) {
-  if (!d3.event.active) sim.alphaTarget(0.009).restart();
+  if (!d3.event.active) sim.alphaTarget(0.9).restart();
   d.fx = d.x;
   d.fy = d.y;
 }
