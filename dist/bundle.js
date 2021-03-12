@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/slider.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/my-pie-adaptable.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -4250,6 +4250,78 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tim
 
 /***/ }),
 
+/***/ "./node_modules/d3-selection-multi/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/d3-selection-multi/index.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ \"./node_modules/d3-selection/src/index.js\");\n/* harmony import */ var d3_transition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3-transition */ \"./node_modules/d3-transition/src/index.js\");\n/* harmony import */ var _src_selection_attrs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/selection/attrs */ \"./node_modules/d3-selection-multi/src/selection/attrs.js\");\n/* harmony import */ var _src_selection_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/selection/styles */ \"./node_modules/d3-selection-multi/src/selection/styles.js\");\n/* harmony import */ var _src_selection_properties__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/selection/properties */ \"./node_modules/d3-selection-multi/src/selection/properties.js\");\n/* harmony import */ var _src_transition_attrs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/transition/attrs */ \"./node_modules/d3-selection-multi/src/transition/attrs.js\");\n/* harmony import */ var _src_transition_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/transition/styles */ \"./node_modules/d3-selection-multi/src/transition/styles.js\");\n\n\n\n\n\n\n\n\nd3_selection__WEBPACK_IMPORTED_MODULE_0__[\"selection\"].prototype.attrs = _src_selection_attrs__WEBPACK_IMPORTED_MODULE_2__[\"default\"];\nd3_selection__WEBPACK_IMPORTED_MODULE_0__[\"selection\"].prototype.styles = _src_selection_styles__WEBPACK_IMPORTED_MODULE_3__[\"default\"];\nd3_selection__WEBPACK_IMPORTED_MODULE_0__[\"selection\"].prototype.properties = _src_selection_properties__WEBPACK_IMPORTED_MODULE_4__[\"default\"];\nd3_transition__WEBPACK_IMPORTED_MODULE_1__[\"transition\"].prototype.attrs = _src_transition_attrs__WEBPACK_IMPORTED_MODULE_5__[\"default\"];\nd3_transition__WEBPACK_IMPORTED_MODULE_1__[\"transition\"].prototype.styles = _src_transition_styles__WEBPACK_IMPORTED_MODULE_6__[\"default\"];\n\n\n//# sourceURL=webpack:///./node_modules/d3-selection-multi/index.js?");
+
+/***/ }),
+
+/***/ "./node_modules/d3-selection-multi/src/selection/attrs.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/d3-selection-multi/src/selection/attrs.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ \"./node_modules/d3-selection/src/index.js\");\n\n\nfunction attrsFunction(selection, map) {\n  return selection.each(function() {\n    var x = map.apply(this, arguments), s = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__[\"select\"])(this);\n    for (var name in x) s.attr(name, x[name]);\n  });\n}\n\nfunction attrsObject(selection, map) {\n  for (var name in map) selection.attr(name, map[name]);\n  return selection;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function(map) {\n  return (typeof map === \"function\" ? attrsFunction : attrsObject)(this, map);\n});\n\n\n//# sourceURL=webpack:///./node_modules/d3-selection-multi/src/selection/attrs.js?");
+
+/***/ }),
+
+/***/ "./node_modules/d3-selection-multi/src/selection/properties.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/d3-selection-multi/src/selection/properties.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ \"./node_modules/d3-selection/src/index.js\");\n\n\nfunction propertiesFunction(selection, map) {\n  return selection.each(function() {\n    var x = map.apply(this, arguments), s = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__[\"select\"])(this);\n    for (var name in x) s.property(name, x[name]);\n  });\n}\n\nfunction propertiesObject(selection, map) {\n  for (var name in map) selection.property(name, map[name]);\n  return selection;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function(map) {\n  return (typeof map === \"function\" ? propertiesFunction : propertiesObject)(this, map);\n});\n\n\n//# sourceURL=webpack:///./node_modules/d3-selection-multi/src/selection/properties.js?");
+
+/***/ }),
+
+/***/ "./node_modules/d3-selection-multi/src/selection/styles.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/d3-selection-multi/src/selection/styles.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ \"./node_modules/d3-selection/src/index.js\");\n\n\nfunction stylesFunction(selection, map, priority) {\n  return selection.each(function() {\n    var x = map.apply(this, arguments), s = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__[\"select\"])(this);\n    for (var name in x) s.style(name, x[name], priority);\n  });\n}\n\nfunction stylesObject(selection, map, priority) {\n  for (var name in map) selection.style(name, map[name], priority);\n  return selection;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function(map, priority) {\n  return (typeof map === \"function\" ? stylesFunction : stylesObject)(this, map, priority == null ? \"\" : priority);\n});\n\n\n//# sourceURL=webpack:///./node_modules/d3-selection-multi/src/selection/styles.js?");
+
+/***/ }),
+
+/***/ "./node_modules/d3-selection-multi/src/transition/attrs.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/d3-selection-multi/src/transition/attrs.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ \"./node_modules/d3-selection/src/index.js\");\n\n\nfunction attrsFunction(transition, map) {\n  return transition.each(function() {\n    var x = map.apply(this, arguments), t = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__[\"select\"])(this).transition(transition);\n    for (var name in x) t.attr(name, x[name]);\n  });\n}\n\nfunction attrsObject(transition, map) {\n  for (var name in map) transition.attr(name, map[name]);\n  return transition;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function(map) {\n  return (typeof map === \"function\" ? attrsFunction : attrsObject)(this, map);\n});\n\n\n//# sourceURL=webpack:///./node_modules/d3-selection-multi/src/transition/attrs.js?");
+
+/***/ }),
+
+/***/ "./node_modules/d3-selection-multi/src/transition/styles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/d3-selection-multi/src/transition/styles.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ \"./node_modules/d3-selection/src/index.js\");\n\n\nfunction stylesFunction(transition, map, priority) {\n  return transition.each(function() {\n    var x = map.apply(this, arguments), t = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__[\"select\"])(this).transition(transition);\n    for (var name in x) t.style(name, x[name], priority);\n  });\n}\n\nfunction stylesObject(transition, map, priority) {\n  for (var name in map) transition.style(name, map[name], priority);\n  return transition;\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function(map, priority) {\n  return (typeof map === \"function\" ? stylesFunction : stylesObject)(this, map, priority == null ? \"\" : priority);\n});\n\n\n//# sourceURL=webpack:///./node_modules/d3-selection-multi/src/transition/styles.js?");
+
+/***/ }),
+
 /***/ "./node_modules/d3-selection/src/constant.js":
 /*!***************************************************!*\
   !*** ./node_modules/d3-selection/src/constant.js ***!
@@ -6350,15 +6422,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dis
 
 /***/ }),
 
-/***/ "./src/slider.js":
-/*!***********************!*\
-  !*** ./src/slider.js ***!
-  \***********************/
+/***/ "./src/my-pie-adaptable.js":
+/*!*********************************!*\
+  !*** ./src/my-pie-adaptable.js ***!
+  \*********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\n// import { attrs } from 'd3-selection-multi';\n\nalert('ha!');\n\nlet dimensions = {\n  width: 800,\n  height: 400,\n};\n\nlet myRange = d3__WEBPACK_IMPORTED_MODULE_0__[\"range\"](50, 751, 5);\n\nlet canvas = select('body')\n  .append('svg')\n  .style('background', 'lightgrey')\n  .attrs(dimensions);\n\n\n//# sourceURL=webpack:///./src/slider.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n/* harmony import */ var d3_selection_multi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3-selection-multi */ \"./node_modules/d3-selection-multi/index.js\");\n\n\n\nlet [myX, myY] = [window.innerWidth, window.innerHeight / 2];\ndraw();\n\nconst body = document.getElementsByTagName('body')[0];\nconsole.log(body);\n\nwindow.addEventListener('resize', (e) => {\n  console.log(e.target.innerWidth);\n  myX = e.target.innerWidth;\n  myY = e.target.innerHeight / 2;\n\n  body.innerHTML = '';\n  draw();\n});\n\nfunction draw() {\n  // let dim = { width: myX, height: myY };\n  let dim = { width: myX, height: myY };\n  let svg = d3__WEBPACK_IMPORTED_MODULE_0__[\"select\"]('body').append('svg').style('background', 'lightgrey').attrs(dim);\n\n  let arcGen = d3__WEBPACK_IMPORTED_MODULE_0__[\"arc\"]();\n  // arcGen.innerRadius(40).outerRadius(120).cornerRadius(10);\n  // arcGen.innerRadius(40).outerRadius(120);\n  arcGen.innerRadius(0).outerRadius(myY / 2.5);\n\n  let data = [10, 15, 35, 40, 42, 50];\n  let colors = d3__WEBPACK_IMPORTED_MODULE_0__[\"schemeOranges\"][data.length];\n\n  let arcs = d3__WEBPACK_IMPORTED_MODULE_0__[\"pie\"]()(data);\n  // arcs = arcs(data)\n  console.log(arcs);\n\n  svg\n    .selectAll('path')\n    .data(arcs)\n    .enter()\n    .append('path')\n    .attrs({\n      d: arcGen, // same as 'd': d=>arcGen(d)\n      stroke: 'black',\n      fill: (d, i) => colors[i],\n      // transform: `translate(300,200)`,\n      transform: `translate(${myX / 2},${myY / 2})`,\n    });\n\n  arcs.forEach((d) => {\n    console.log(arcGen.centroid(d));\n  });\n\n  svg\n    .selectAll('circle')\n    .data(arcs)\n    .enter()\n    .append('circle')\n    .attrs({\n      r: 2,\n      cx: (d) => arcGen.centroid(d)[0],\n      cy: (d) => arcGen.centroid(d)[1],\n      transform: 'translate(295,195)',\n      transform: `translate(${myX / 2},${myY / 2})`,\n    });\n  svg\n    .selectAll('text')\n    .data(arcs)\n    .enter()\n    .append('text')\n    .attrs({\n      x: (d) => arcGen.centroid(d)[0],\n      y: (d) => arcGen.centroid(d)[1],\n      transform: 'translate(298,201)',\n      transform: `translate(${myX / 2},${myY / 2})`,\n      fill: 'black',\n      'font-size': 12,\n      'text-anchor': 'start', // end, middle, start\n      'alignment-baseline': 'text-after-edge', // middle, hanging, central,  after-edge | text-after-edge\n    })\n    .text((d) => d.value);\n}\n\n\n//# sourceURL=webpack:///./src/my-pie-adaptable.js?");
 
 /***/ })
 

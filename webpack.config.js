@@ -18,10 +18,11 @@ module.exports = {
   // entry: './src/my-slider.js',
   // entry: './src/my-bubble.js',
   // entry: './src/my-force.js',
+  entry: './src/my-pie-adaptable.js',
   // entry: './src/proj01.slider.js',
   // entry: './src/proj02.bubble.js',
   // entry: './src/proj03.force.js',
-  entry: './src/proj04.stream.js',
+  // entry: './src/proj04.stream.js',
 
   devServer: {
     contentBase: './dist',
